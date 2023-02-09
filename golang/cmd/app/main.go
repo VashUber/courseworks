@@ -1,7 +1,18 @@
 package main
 
-import "fmt"
+import (
+	"net/http"
+
+	"github.com/VashUber/coursework/golang/internal/mux"
+	"github.com/VashUber/coursework/golang/internal/server"
+	"go.uber.org/fx"
+)
 
 func main() {
-	fmt.Println("coursework")
+	app := fx.New(
+		fx.Provide(server.NewHttpServer, mux.NewServerMux),
+		fx.Invoke(func(*http.Server) {}),
+	)
+
+	app.Run()
 }
