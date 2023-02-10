@@ -1,19 +1,17 @@
 package app
 
 import (
-	"net/http"
-
-	"github.com/VashUber/coursework/golang/internal/fileserver"
-	"github.com/VashUber/coursework/golang/internal/mux"
-	"github.com/VashUber/coursework/golang/internal/server"
-	"go.uber.org/fx"
+	"github.com/VashUber/coursework/golang/internal/components/fileserver"
+	"github.com/VashUber/coursework/golang/internal/components/httpserver"
+	"github.com/VashUber/coursework/golang/internal/config"
+	"github.com/gin-gonic/gin"
 )
 
-func NewApp() *fx.App {
-	app := fx.New(
-		fx.Provide(server.NewHttpServer, mux.NewServerMux, fileserver.NewFileServer),
-		fx.Invoke(func(*http.Server) {}),
-	)
+func Run(cfg *config.Config) {
+	r := gin.Default()
 
-	return app
+	srv := httpserver.CreateNewHttpServer(cfg, r)
+	fileserver.RunFileServer(r, "/", "./static")
+
+	srv.ListenAndServe()
 }

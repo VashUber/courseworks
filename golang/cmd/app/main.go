@@ -1,9 +1,12 @@
 package main
 
-import "github.com/VashUber/coursework/golang/internal/app"
+import (
+	"github.com/VashUber/coursework/golang/internal/app"
+	"github.com/VashUber/coursework/golang/internal/config"
+)
 
 func main() {
-	app := app.NewApp()
+	cfg := config.NewConfig()
 
-	app.Run()
+	app.Run(cfg)
 }
