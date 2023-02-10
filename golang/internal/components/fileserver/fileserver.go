@@ -1,7 +1,14 @@
 package fileserver
 
-import "github.com/gin-gonic/gin"
+import (
+	"net/http"
 
-func RunFileServer(e *gin.Engine, path, root string) {
-	e.Static(path, root)
+	"github.com/gin-gonic/gin"
+)
+
+func RunFileServer(e *gin.Engine, root string) {
+	e.NoRoute(func(ctx *gin.Context) {
+		ctx.Status(http.StatusAccepted)
+		ctx.File(root)
+	})
 }

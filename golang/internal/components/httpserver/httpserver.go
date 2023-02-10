@@ -7,11 +7,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func CreateNewHttpServer(cfg *config.Config, r *gin.Engine) *http.Server {
+func RunHttpServer(cfg *config.Config, r *gin.Engine) {
 	srv := &http.Server{
 		Addr:    cfg.Port,
 		Handler: r,
 	}
 
-	return srv
+	srv.ListenAndServe()
 }

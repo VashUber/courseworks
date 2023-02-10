@@ -6,7 +6,7 @@ type Config struct {
 
 func NewConfig() *Config {
 	cfg := &Config{
-		Port: ":3000",
+		Port: ":4000",
 	}
 
 	return cfg
