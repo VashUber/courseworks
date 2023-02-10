@@ -14,7 +14,11 @@ func NewRouter(cfg config.ControllerConfig) *Router {
 		Engine: gin.Default(),
 	}
 
-	initSpaRoute(r.Engine, cfg.StaticPath)
+	r.initRoutes(cfg)
 
 	return r
+}
+
+func (r *Router) initRoutes(cfg config.ControllerConfig) {
+	initSpaRoute(r.Engine, cfg.StaticPath)
 }
