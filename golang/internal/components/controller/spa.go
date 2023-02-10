@@ -1,4 +1,4 @@
-package fileserver
+package controller
 
 import (
 	"net/http"
@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func RunFileServer(e *gin.Engine, root string) {
+func initSpaRoute(e *gin.Engine, root string) {
 	e.NoRoute(func(ctx *gin.Context) {
 		ctx.Status(http.StatusAccepted)
 		ctx.File(root)

@@ -1,12 +1,14 @@
 package config
 
-type Config struct {
-	Port string
-}
-
 func NewConfig() *Config {
 	cfg := &Config{
-		Port: ":4000",
+		Http: HttpConfig{
+			Port: ":4000",
+		},
+
+		Controller: ControllerConfig{
+			StaticPath: "./static/index.html",
+		},
 	}
 
 	return cfg

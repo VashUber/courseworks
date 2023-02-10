@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func RunHttpServer(cfg *config.Config, r *gin.Engine) {
+func RunHttpServer(cfg config.HttpConfig, r *gin.Engine) {
 	srv := &http.Server{
 		Addr:    cfg.Port,
 		Handler: r,

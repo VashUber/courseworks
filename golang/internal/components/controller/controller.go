@@ -1,8 +1,7 @@
 package controller
 
 import (
-	"net/http"
-
+	"github.com/VashUber/coursework/golang/internal/config"
 	"github.com/gin-gonic/gin"
 )
 
@@ -10,22 +9,12 @@ type Router struct {
 	Engine *gin.Engine
 }
 
-func NewRouter() *Router {
+func NewRouter(cfg config.ControllerConfig) *Router {
 	r := &Router{
 		Engine: gin.Default(),
 	}
 
-	api := r.Engine.Group("/api")
-
-	{
-		api.GET("/test", r.SomeApi)
-	}
+	initSpaRoute(r.Engine, cfg.StaticPath)
 
 	return r
-}
-
-func (r *Router) SomeApi(ctx *gin.Context) {
-	name := ctx.Query("name")
-
-	ctx.JSON(http.StatusOK, name)
 }
