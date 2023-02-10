@@ -3,11 +3,12 @@ package config
 func NewConfig() *Config {
 	cfg := &Config{
 		Http: HttpConfig{
-			Port: ":4000",
+			Port: ":3000",
 		},
 
 		Controller: ControllerConfig{
-			StaticPath: "./static/index.html",
+			StaticDir:   "./static",
+			SpaViewRoot: "/spa_app/",
 		},
 	}
 

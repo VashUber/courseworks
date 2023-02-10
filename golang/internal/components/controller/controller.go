@@ -21,7 +21,7 @@ func NewRouter(cfg config.ControllerConfig) *Router {
 
 func (r *Router) initRoutes(cfg config.ControllerConfig) {
 	{
-		initSpaRoute(r.Engine, cfg.StaticPath)
+		initSpaRoute(r.Engine, cfg.StaticDir, cfg.SpaViewRoot)
 	}
 
 	{

@@ -5,7 +5,8 @@ type HttpConfig struct {
 }
 
 type ControllerConfig struct {
-	StaticPath string
+	StaticDir   string
+	SpaViewRoot string
 }
 
 type Config struct {

@@ -10,8 +10,10 @@ export default defineConfig((cfg) => ({
   plugins: [vue()],
 
   build: {
-    outDir: resolve(__dirname, "../static"),
+    outDir: resolve(__dirname, "../static/spa_app"),
     sourcemap: cfg.mode === "dev",
     emptyOutDir: true,
   },
+
+  base: "/spa_app/",
 }));
