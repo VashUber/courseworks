@@ -25,9 +25,9 @@ func (r *Router) initRoutes(cfg config.ControllerConfig) {
 	}
 
 	{
-		uc := NewUserController()
+		uc := newUserController()
 		user_group := r.Engine.Group("/api/user")
 
-		uc.InitUserRoutes(user_group)
+		uc.initUserRoutes(user_group)
 	}
 }
