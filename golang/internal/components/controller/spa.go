@@ -18,6 +18,6 @@ func initSpaRoute(e *gin.Engine, root, spaRoot string) {
 		}
 
 		ctx.Status(http.StatusAccepted)
-		ctx.File(fmt.Sprintf("%s%sindex.html", root, spaRoot))
+		ctx.File(fmt.Sprintf("%s/%s/index.html", root, spaRoot))
 	})
 }
